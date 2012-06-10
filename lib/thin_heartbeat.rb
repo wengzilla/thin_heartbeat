@@ -8,8 +8,8 @@ module ThinHeartbeat
     attr_accessor :redis
 
     def initialize(password = nil)
-      redis = Redis.new(:host => 'localhost', :port => 6379)
-      redis.auth(password) if password
+      @redis = Redis.new(:host => 'localhost', :port => 6379)
+      @redis.auth(password) if password
     end
 
     def extend_life(heartbeat)
