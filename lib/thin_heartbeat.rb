@@ -19,12 +19,12 @@ module ThinHeartbeat
 
     def get_key_from_heartbeat(heartbeat)
       hb = Hashie::Mash.new(heartbeat)
-      "hb:#{hb.data.user_type}:#{hb.data.user_id}:#{hb.clientId}:#{hb.data.room_id}"
+      "hb:#{hb.data.user_type}:#{hb.data.user_id}:#{hb.clientId}:#{hb.data.location}"
     end
 
     def get_key(client)
       raise client.inspect if client.user_id.blank? || client.user_type.blank?
-      "hb:#{client.user_type}:#{client.user_id}:#{client.client_id}:#{client.room_id}"
+      "hb:#{client.user_type}:#{client.user_id}:#{client.client_id}:#{client.location}"
     end
 
     def add(client)
