@@ -36,10 +36,11 @@ module ThinHeartbeat
 
     def delete(client)
       key = redis.keys "hb:*:#{client.client_id}:*"
-      # puts "KEY: #{key.first.inspect}"
-      client_json = redis.spop key.first
-      # puts "CLIENT_JSON: #{client_json.inspect}"
-      client_hash = JSON.parse(client_json)
+      if client_json = redis.spop key.first
+        client_hash = JSON.parse(client_json)
+      else
+        nil
+      end
     end
   end
 end
