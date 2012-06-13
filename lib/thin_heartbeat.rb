@@ -38,7 +38,7 @@ module ThinHeartbeat
       key = redis.keys "hb:*:#{client.client_id}:*"
       if client_json = redis.spop key.first
         client_hash = JSON.parse(client_json)
-      else
+      rescue
         nil
       end
     end
