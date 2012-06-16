@@ -14,6 +14,7 @@ module ThinHeartbeat
 
     def extend_life(heartbeat)
       key = get_key_from_heartbeat(heartbeat)
+      puts key.inspect
       redis.expire key, 30
     end
 
